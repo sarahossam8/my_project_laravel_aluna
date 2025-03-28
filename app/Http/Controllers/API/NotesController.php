@@ -16,7 +16,7 @@ class NotesController extends Controller
         return response()->json(['texts' => $texts], 200);
     }
 
-    public function store(Request $request,string $user_id)
+    public function store(Request $request)
     {
         $request->validate([
             'text' => 'required|string',
@@ -27,7 +27,7 @@ class NotesController extends Controller
 
         $text = note1::create([
             'text' => $request->text,
-            'users_id' =>$user_id,
+            'users_id' => $request->user()->id,
             'output_text' => json_encode($mlResponse), 
             'title' => $request->title,
         ]);
