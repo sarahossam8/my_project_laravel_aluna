@@ -17,7 +17,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::post('/text/{id}', [NotesController::class, 'store']);
+    Route::post('/text', [NotesController::class, 'store']);
     Route::get('/text/{id}', [NotesController::class, 'show']);
     Route::put('/text/{id}/{text_id}', [NotesController::class, 'update']);
     Route::delete('/text/{id}/{text_id}', [NotesController::class, 'destroy']);
