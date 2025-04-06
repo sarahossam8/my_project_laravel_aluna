@@ -21,13 +21,13 @@ class NotesController extends Controller
         $request->validate([
             'text' => 'required|string',
             'title' => 'required|string'
-        ]);
+        ]);      
 
         $mlResponse = $this->sendToMLModel($request->text);
 
         $text = note1::create([
             'text' => $request->text,
-            'users_id' => $request->user()->id,
+            'users_id' => $request->user()->id, 
             'output_text' => json_encode($mlResponse), 
             'title' => $request->title,
         ]);
